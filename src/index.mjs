@@ -9,7 +9,7 @@ import { getPersonRoute } from './person/grpc/get-person-route.mjs';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const PROTO_PATH =  path.join(__dirname, './proto/routes-guide.proto')
+const PROTO_PATH =  path.join(__dirname, './protos/person/person-routes-guide.proto')
 const packageDefinition = protoLoader.loadSync(
     PROTO_PATH,
     {
@@ -23,7 +23,7 @@ const packageDefinition = protoLoader.loadSync(
 
 
 const protoDescriptor = grpc.loadPackageDefinition(packageDefinition)
-const routesGuide = protoDescriptor.RoutesGuide
+const routesGuide = protoDescriptor.PersonRoutesGuide
 
 const server = new grpc.Server()
 server.addService(routesGuide.service, {
